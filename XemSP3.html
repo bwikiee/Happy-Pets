@@ -13,8 +13,9 @@
   <div class="top-bar">
     <button onclick="window.location.href='tìm kiếm.html'">⬅ Quay lại</button>
     <div class="logo">🐾 Happy Pets</div>
-    <div class="cart">
+    <div class="cart" onclick="goCart()">
     <i class="fa-solid fa-cart-shopping"></i>
+  </div>
    
 </div>
   </div>
@@ -107,6 +108,9 @@ function addToCart() {
 
   localStorage.setItem("cart", JSON.stringify(cart));
   alert("Đã thêm vào giỏ hàng!");
+}
+function goCart() {
+  window.location.href = "XemGH.html";
 }
 </script>
 </body>
