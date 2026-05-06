@@ -1,0 +1,146 @@
+<!DOCTYPE html> 
+<html lang="vi"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Happy Pets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="top-bar">
+    <div class="top-left">
+        Kênh Người Bán | Kết nối
+    </div>
+    <div class="top-right">
+        Thông Báo | Hỗ Trợ | Tiếng Việt | 
+        <span class="user" onclick="goUser()">User123456</span>
+    </div>
+</div>
+
+<div class="main-header">
+    <div class="logo">🐾 Happy Pets</div>
+
+    <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Tìm sản phẩm cho thú cưng...">
+        <button onclick="searchProduct()">🔍</button>
+    </div>
+
+    <div id="searchMessage" class="search-message"></div>
+    <div class="cart">
+    <i class="fa-solid fa-cart-shopping"></i>
+</div>
+</div>
+
+<div class="menu">
+    <span>Thức ăn chó mèo</span>
+    <span>Đồ chơi thú cưng</span>
+    <span>Chuồng & nhà</span>
+    <span>Vệ sinh</span>
+    <span>Phụ kiện</span>
+    <span class="service-btn" onclick="goService9()">
+        Dịch vụ & Chăm sóc thú cưng
+    </span>
+</div>
+
+<div class="container">
+    <div class="banner-container">
+        <div class="banner-left">
+            <button class="prev">&#10094;</button>
+            <img id="banner-img" src="8.png">
+            <button class="next">&#10095;</button>
+        </div>
+
+        <div class="banner-right">
+            <img src="6.jpg">
+        </div>
+    </div>
+</div>
+<script>
+const products = [
+    "SỮA TẮM DEAR DOKET(200ML)",
+    "KETOMYCINE TRỊ NẤM",
+    "HẠT ME-0 CHO MÈO 1.1kg-1.2kg",
+    "TÔNG ĐƠ BÀN CHÂN CHO MÈO"
+];
+
+function searchProduct() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase().trim();
+    const message = document.getElementById("searchMessage");
+
+    if (keyword === "") return;
+
+    const words = keyword.split(" ");
+
+    const found = products.some(p => {
+        const name = p.toLowerCase();
+        return words.every(word => name.includes(word));
+    });
+
+    if (!found) {
+        message.innerText = "Không tồn tại sản phẩm.";
+
+        // 🔥 Ẩn toàn bộ sản phẩm bên dưới
+        document.querySelector(".product-list").style.display = "none";
+        return;
+    }
+
+    // nếu có thì hiện lại + chuyển trang
+    message.innerText = "";
+    document.querySelector(".product-list").style.display = "flex";
+
+    window.location.href = "tìm kiếm.html?q=" + encodeURIComponent(keyword);
+}
+
+// Enter
+document.getElementById("searchInput").addEventListener("keyup", function(e) {
+    if (e.key === "Enter") {
+        searchProduct();
+    }
+});
+function goUser() {
+    window.location.href = "XemVoucher.html";
+}
+</script>
+
+<div class="container">
+    <div class="suggest-title">GỢI Ý HÔM NAY</div>
+
+    <div class="product-list">
+
+        <div class="product-item" onclick="goSP3()">
+            <img src="sữa tắm.jpg">
+            <p class="name">SỮA TẮM DEAR DOKET(200ML)</p>
+            <p class="price">35.000-69.000đ</p>
+        </div>
+
+        <div class="product-item">
+            <img src="thuốc.jpg">
+            <p class="name">KETOMYCINE TRỊ NẤM</p>
+            <p class="price">35.000đ</p>
+        </div>
+
+        <div class="product-item">
+            <img src="hạt.jpg">
+            <p class="name">HẠT ME-0 CHO MÈO 1.1kg-1.2kg</p>
+            <p class="price">90.000-115.000đ</p>
+        </div>
+
+        <div class="product-item">
+            <img src="tông đơ.jpg">
+            <p class="name">TÔNG ĐƠ BÀN CHÂN CHO MÈO</p>
+            <p class="price">80.000-140.000đ</p>
+        </div>
+
+    </div>
+</div>
+<script>
+    function goSP3(){
+     window.location.href = "XemSP3.html";
+    }
+</script>
+</body>
+</html>
