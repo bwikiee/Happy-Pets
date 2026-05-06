@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xem sản phẩm</title>
+  <link rel="stylesheet" href="spham.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button onclick="window.location.href='giao diện chính.html'">⬅ Quay lại</button>
+    <div class="logo">🐾 Happy Pets</div>
+    <div class="cart" onclick="goCart()">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="container">
+
+    <!-- LEFT: IMAGE -->
+    <div class="image-box">
+      <img src="pateR.jpg" alt="product" class="main-img" />
+
+      <div class="thumbs">
+        <img src="pateRR.jpg" />
+        <img src="R.webp" />
+      </div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="info-box">
+
+      <h1> Pate Cho Mèo Con Royal Canin Kitten 85g (loaf, jelly, gravy) </h1>
+
+      <p class="price">35.000đ</p>
+
+      <p class="rating">⭐ 4.9 | 2.5k đánh giá</p>
+
+      <p class="stock">Còn hàng: 120 sản phẩm</p>
+
+      <!-- QUANTITY -->
+      <div class="qty">
+        <button>-</button>
+        <input type="number" value="1" />
+        <button>+</button>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="actions">
+        <button class="cart-btn" onclick="addToCart()">+ Thêm vào giỏ</button>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="desc">
+    <h2>Mô tả sản phẩm</h2>
+    <p>
+      Thương hiệu: Royal Canin. Phù hợp cho: Mèo (mèo mẹ đang mang thai, cho con bú và mèo con đến 12 tháng tuổi). Pate mèo con Royal Canin Kitten Instinctive là sản phẩm được thiết kế dành riêng cho mèo dưới 12 tháng tuổi. Pate Royal Canin Kitten Instinctive chứa các thành phần trích xuất thịt, sữa và các khoáng chất thiết yếu nhằm hỗ trợ tăng cường hệ thống miễn dịch cho mèo con, thúc đẩy chúng trưởng thành khỏe mạnh. Thức ăn cho mèo ROYAL CANIN được tạo ra với sự cân bằng tối ưu giữa các protein, chất béo và carbohydrate để tăng sự ngon miệng, bổ sung dinh dưỡng hoàn hảo. Pate mèo này còn phù hợp với mèo mẹ đang mang thai và trong giai đoạn cho con bú.
+    </p>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="reviews">
+    <h2>Đánh giá khách hàng</h2>
+
+    <div class="review-item">
+      <b>Nguyễn A</b>
+      <p>⭐⭐⭐⭐⭐ Sản phẩm rất tốt!</p>
+    </div>
+
+
+  </div>
+<script>
+  function goCart() {
+    window.location.href = "XemGH.html";
+}
+function addToCart() {
+  const name = document.querySelector(".info-box h1").innerText;
+  const price = 35000;
+  const quantity = parseInt(document.querySelector(".qty input").value);
+  const image = document.querySelector(".main-img").src;
+
+  const product = {
+    id: 1, // sản phẩm 1
+    name: name,
+    price: price,
+    quantity: quantity,
+    image: image
+  };
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(item => item.id === product.id);
+
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
+    cart.push(product);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Đã thêm vào giỏ hàng!");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xem sản phẩm</title>
+  <link rel="stylesheet" href="spham.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button onclick="window.location.href='giao diện chính.html'">⬅ Quay lại</button>
+    <div class="logo">🐾 Happy Pets</div>
+    <div class="cart" onclick="goCart()">
+    <i class="fa-solid fa-cart-shopping"></i>
+</div>
+</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="container">
+
+    <!-- LEFT: IMAGE -->
+    <div class="image-box">
+      <img src="tongdo.jpg" alt="product" class="main-img" />
+
+      <div class="thumbs">
+        <img src="tongxanh.webp" />
+      </div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="info-box">
+
+      <h1> Tông Đơ Cạo Bàn Chân Chó Mèo Không Dây Có Đèn LED Soi Sáng Sạc USB Tiếng Ồn Thấp Máy Tỉa Lông Thú Cưng </h1>
+
+      <p class="price">80.000 - 120.000đ</p>
+
+      <p class="rating">⭐ 4.9 | 12.5k đánh giá</p>
+
+      <p class="stock">Còn hàng: 120 sản phẩm</p>
+
+      <!-- QUANTITY -->
+      <div class="qty">
+        <button>-</button>
+        <input type="number" value="1" />
+        <button>+</button>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="actions">
+        <button class="cart-btn" onclick="addToCart()">+ Thêm vào giỏ</button>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="desc">
+    <h2>Mô tả sản phẩm</h2>
+    <p>
+      Tính năng sản phẩm:
+        Đèn Led phụ, chiếu sáng độ sâu của các khoảng trống, cắt tỉa miếng thịt sạch sẽ và loại bỏ các chấn thương do tai nạn.
+        Làm sạch triệt để các khe hở, chặn các góc nhỏ dễ bị vi khuẩn sinh sản, tránh xa mối đe dọa của vi khuẩn.
+        Lưỡi dao tinh tế 1cm không có góc chết để cắt tỉa.
+        Công tắc trượt nhẹ, thân máy nhỏ gọn, dễ sử dụng.
+        Răng lưỡi dao có hình chữ R, với các cạnh tròn và vát mép, tiếp xúc với da 360 ° để chống hư hại.
+        Sạc USB thuận tiện, sạc và cắm mục đích kép, có thể được sử dụng trong khi sạc.
+        Thiết kế giảm tiếng ồn nhiều lần, độ rung thấp và hoạt động tiếng ồn thấp, không làm phiền vật nuôi.
+    </p>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="reviews">
+    <h2>Đánh giá khách hàng</h2>
+
+    <div class="review-item">
+      <b>Trần Văn D</b>
+      <p>⭐⭐⭐⭐⭐ Chất lượng sản phẩm rất tốt, giá rẻ, đáng mua.</p>
+    </div>
+
+
+  </div>
+<script>
+function addToCart() {
+  const name = document.querySelector(".info-box h1").innerText;
+  const price = 89000;
+  const quantity = parseInt(document.querySelector(".qty input").value);
+  const image = document.querySelector(".main-img").src;
+
+  const product = {
+    id: 4, 
+    name: name,
+    price: price,
+    quantity: quantity,
+    image: image
+  };
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(item => item.id === product.id);
+
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
+    cart.push(product);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Đã thêm vào giỏ hàng!");
+}
+function goCart() {
+    window.location.href = "XemGH.html";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xem sản phẩm</title>
+  <link rel="stylesheet" href="spham.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button onclick="window.location.href='giao diện chính.html'">⬅ Quay lại</button>
+    <div class="logo">🐾 Happy Pets</div>
+    <div class="cart" onclick="goCart()">
+    <i class="fa-solid fa-cart-shopping"></i>
+</div>
+</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="container">
+
+    <!-- LEFT: IMAGE -->
+    <div class="image-box">
+      <img src="caosu.jpg" alt="product" class="main-img" />
+
+      <div class="thumbs">
+        <img src="xương.webp" />
+        <img src="ngậm.jpg" />
+      </div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="info-box">
+
+      <h1> Đồ chơi cao su gặm sạch răng, chống cắn phá đồ cho chó </h1>
+
+      <p class="price">17.000đ - 40.000đ</p>
+
+      <p class="rating">⭐ 5.0 | 1.2K đánh giá</p>
+
+      <p class="stock">Còn hàng: 225 sản phẩm</p>
+
+      <!-- QUANTITY -->
+      <div class="qty">
+        <button>-</button>
+        <input type="number" value="1" />
+        <button>+</button>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="actions">
+        <button class="cart-btn" onclick="addToCart()">+ Thêm vào giỏ</button>
+        <button class="buy-btn">Mua ngay</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="desc">
+    <h2>Mô tả sản phẩm</h2>
+    <p>
+      Đồ chơi cao su gặm sạch răng, chống cắn phá đồ cho chó. Nhiều hình dáng, kích thước và tiện dụng. Chất liệu cao su có gai cao su tăng cường giúp làm sạch răng chó khi gặm
+
+
+
+Sản phẩm có nhiều màu (Shop giao màu ngẫu nhiên)
+    </p>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="reviews">
+    <h2>Đánh giá khách hàng</h2>
+
+    <div class="review-item">
+      <b>Lê B</b>
+      <p>⭐⭐⭐⭐⭐ Màu sắc đẹp, giao nhanh!</p>
+    </div>
+
+
+  </div>
+<script>
+function addToCart() {
+  const name = document.querySelector(".info-box h1").innerText;
+  const price = 17000; 
+  const quantity = parseInt(document.querySelector(".qty input").value);
+  const image = document.querySelector(".main-img").src;
+
+  const product = {
+    id: 2,
+    name: name,
+    price: price,
+    quantity: quantity,
+    image: image
+  };
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(item => item.id === product.id);
+
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
+    cart.push(product);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Đã thêm vào giỏ hàng!");
+}
+function goCart() {
+    window.location.href = "XemGH.html";
+}
+</script>
+</body>
+</html>
