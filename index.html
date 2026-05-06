@@ -30,7 +30,7 @@
     </div>
 
     <div id="searchMessage" class="search-message"></div>
-    <div class="cart">
+    <div class="cart" onclick="goCart()"></div>
     <i class="fa-solid fa-cart-shopping"></i>
 </div>
 </div>
@@ -61,10 +61,10 @@
 </div>
 <script>
 const products = [
-    "SỮA TẮM DEAR DOKET(200ML)",
-    "KETOMYCINE TRỊ NẤM",
-    "HẠT ME-0 CHO MÈO 1.1kg-1.2kg",
-    "TÔNG ĐƠ BÀN CHÂN CHO MÈO"
+    "Sữa tắm DEAR DOKET cho chó mèo đủ hương trị ve, rận, giúp mượt lông",
+    "Pate Cho Mèo Con Royal Canin Kitten 85g (loaf, jelly, gravy) ",
+    "Đồ chơi cao su gặm sạch răng, chống cắn phá đồ cho chó",
+    "Tông Đơ Cạo Bàn Chân Chó Mèo Không Dây Có Đèn LED Soi Sáng Sạc USB Tiếng Ồn Thấp Máy Tỉa Lông Thú Cưng"
 ];
 
 function searchProduct() {
@@ -110,36 +110,47 @@ function goUser() {
 
     <div class="product-list">
 
-        <div class="product-item" onclick="goSP3()">
-            <img src="suatam.jpg">
-            <p class="name">SỮA TẮM DEAR DOKET(200ML)</p>
-            <p class="price">35.000-69.000đ</p>
-        </div>
-
-        <div class="product-item">
-            <img src="thuoc.jpg">
-            <p class="name">KETOMYCINE TRỊ NẤM</p>
-            <p class="price">35.000đ</p>
-        </div>
-
-        <div class="product-item">
-            <img src="hat.jpg">
-            <p class="name">HẠT ME-0 CHO MÈO 1.1kg-1.2kg</p>
-            <p class="price">90.000-115.000đ</p>
-        </div>
-
-        <div class="product-item">
-            <img src="tongdo.jpg">
-            <p class="name">TÔNG ĐƠ BÀN CHÂN CHO MÈO</p>
-            <p class="price">80.000-140.000đ</p>
-        </div>
-
+    <div class="product-item" onclick="goSP3()">
+        <img src="suatam.jpg">
+        <p class="name">Sữa tắm DEAR DOKET cho chó mèo đủ hương trị ve, rận, giúp mượt lông</p>
+        <p class="price">35.000-69.000đ</p>
     </div>
+
+    <div class="product-item" onclick="goSP()">
+        <img src="pateR.jpg">
+        <p class="name">Pate Cho Mèo Con Royal Canin Kitten 85g (loaf, jelly, gravy) </p>
+        <p class="price">35.000đ</p>
+    </div>
+
+    <div class="product-item" onclick="goSP2()">
+        <img src="caosu.jpg">
+        <p class="name">Đồ chơi cao su gặm sạch răng, chống cắn phá đồ cho chó</p>
+        <p class="price">17.000-40.000đ</p>
+    </div>
+
+    <div class="product-item" onclick="goSP4()">
+        <img src="tongdo.jpg">
+        <p class="name">Tông Đơ Cạo Bàn Chân Chó Mèo Không Dây Có Đèn LED Soi Sáng Sạc USB Tiếng Ồn Thấp Máy Tỉa Lông Thú Cưng</p>
+        <p class="price">80.000-120.000đ</p>
+    </div>
+
 </div>
 <script>
     function goSP3(){
      window.location.href = "XemSP3.html";
     }
+    function goSP(){
+     window.location.href = "XemSP.html";
+    }
+    function goSP2(){
+     window.location.href = "XemSP2.html";
+    }
+    function goSP4(){
+     window.location.href = "XemSP4.html";
+    }
+    function goCart() {
+    window.location.href = "XemGH.html";
+}
 </script>
 </body>
 </html>
