@@ -2,6 +2,7 @@
 <html lang="vi"> 
 <head> 
     <meta charset="UTF-8"> 
+    <title>Happy Pets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -82,7 +83,6 @@ function searchProduct() {
     if (!found) {
         message.innerText = "Không tồn tại sản phẩm.";
 
-        // 🔥 Ẩn toàn bộ sản phẩm bên dưới
         document.querySelector(".product-list").style.display = "none";
         return;
     }
@@ -109,10 +109,11 @@ function goUser() {
     <div class="suggest-title">GỢI Ý HÔM NAY</div>
 
     <div class="product-list">
-        <div class="product-item">
+
+        <div class="product-item" onclick="goSP3()">
             <img src="sữa tắm.jpg">
             <p class="name">SỮA TẮM DEAR DOKET(200ML)</p>
-            <p class="price">56.000-64.000đ</p>
+            <p class="price">35.000-69.000đ</p>
         </div>
 
         <div class="product-item">
@@ -132,7 +133,13 @@ function goUser() {
             <p class="name">TÔNG ĐƠ BÀN CHÂN CHO MÈO</p>
             <p class="price">80.000-140.000đ</p>
         </div>
+
     </div>
 </div>
+<script>
+    function goSP3(){
+     window.location.href = "XemSP3.html";
+    }
+</script>
 </body>
 </html>
