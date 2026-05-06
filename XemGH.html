@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xem giỏ hàng</title>
+  <link rel="stylesheet" href="cart.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+<div class="header">
+
+  <div class="title">
+    <h2>🐾 Happy Pets | 🛒 Giỏ Hàng</h2>
+  </div>
+
+  <div class="search-box">
+    <input type="text" placeholder="Tìm kiếm sản phẩm, shop...">
+    <span class="search-icon">🔍</span>
+  </div>
+
+</div>
+
+  <!-- TABLE HEADER -->
+  <div class="cart-header">
+    <div class="col sp">Sản phẩm</div>
+    <div class="col">Đơn giá</div>
+    <div class="col">Số lượng</div>
+    <div class="col">Số tiền</div>
+    <div class="col">Thao tác</div>
+  </div>
+
+  <!-- LIST -->
+  <div id="cart-list"></div>
+
+  <!-- FOOTER -->
+  <div class="cart-footer">
+    <div class="left">
+      <input type="checkbox"> Chọn tất cả
+    </div>
+
+    <div class="right">
+      <span id="total-price">Tổng cộng: 0đ</span>
+      <button onclick="goCheckout()">Mua hàng</button>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+  function loadCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let container = document.getElementById("cart-list");
+    let total = 0;
+
+    container.innerHTML = "";
+
+    cart.forEach((item, index) => {
+
+      let subtotal = item.price * item.quantity;
+      total += subtotal;
+
+      let div = document.createElement("div");
+      div.className = "cart-item";
+
+      div.innerHTML = `
+        <div class="product-info">
+          <img src="${item.image || 'sữa tắm.jpg'}">
+          <span>${item.name}</span>
+        </div>
+
+        <div class="col">${item.price.toLocaleString()}đ</div>
+
+        <div class="col">
+          <div class="qty-box">
+            <button onclick="changeQty(${index}, -1)">-</button>
+            <span>${item.quantity}</span>
+            <button onclick="changeQty(${index}, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="col">${subtotal.toLocaleString()}đ</div>
+
+        <div class="col">
+          <button onclick="removeItem(${index})">Xóa</button>
+        </div>
+      `;
+
+      container.appendChild(div);
+    });
+
+    document.getElementById("total-price").innerText = "Tổng cộng: " + total.toLocaleString() + "đ";
+  }
+
+  function changeQty(index, change) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart[index].quantity += change;
+
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+  }
+
+  function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+  }
+
+  loadCart();
+  function goCheckout() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // kiểm tra giỏ hàng
+  if (cart.length === 0) {
+    alert("Giỏ hàng trống!");
+    return;
+  }
+
+  // chuyển sang trang thanh toán
+  window.location.href = "ThanhToan.html";
+}
+  </script>
+
+</body>
+</html>

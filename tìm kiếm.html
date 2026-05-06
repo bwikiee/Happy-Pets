@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kết quả tìm kiếm</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="main-header">
+    <div class="logo">🐾 Happy Pets</div>
+
+    <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Tìm sản phẩm...">
+        <button onclick="searchProduct()">🔍</button>
+    </div>
+     <div class="cart">
+    <i class="fa-solid fa-cart-shopping"></i></div>
+</div>
+<div class="menu">
+    <span>Thức ăn chó mèo</span>
+    <span>Đồ chơi thú cưng</span>
+    <span>Chuồng & nhà</span>
+    <span>Vệ sinh</span>
+    <span>Phụ kiện</span>
+    <span class="service-btn" onclick="goService9()">
+        Dịch vụ & Chăm sóc thú cưng
+    </span>
+</div>
+<div class="container">
+    <p id="searchMessage" style="color:red;"></p>
+    <div id="result-list" class="product-list"></div>
+</div>
+
+<script>
+
+const productData = [
+    { name: "Sữa Tắm DEAR DOKET 200ML bị ve, rận, bọ chét, bọ nhảy, mượt bóng da lông, thơm dịu nhẹ", price: "35.000đ - 56.000đ", shop: "Happy Store", img: "sữa hồng.jpg" },
+    { name: "Sữa Tắm Cao Cấp (200ml)tắm chó mèo bị ve rận, bọ chét,ghẻ, nấm sạch, mượt lông Dear Doket", price: "30.000đ - 60.000đ", shop: "Pet Mart", img: "sữa vàng.jpg" },
+    { name: "SỮA TẮM DEAR DOKET cho chó mèo đủ hương trị ve, rận, giúp mượt lông", price: "35.000đ - 69.000đ", shop: "Happy Pets", img: "sữa tắm.jpg" },
+    { name: "Sữa Tắm Chó Mèo Cao Cấp Phòng ve, rận, bọ chét, bọ nhảy, mượt bóng da lông, thơm dịu nhẹ Dear Doket 200ML", price: "38.000đ - 58.000đ", shop: "Pet Care", img: "sữa xanh.png" },
+    { name: "Sữa Tắm chó mèo 200ml Dear Doket Rose hương hoa hồng, ve, rận, bọ chét, ghẻ, nấm da thú cưng mượt lông", price: "32.000đ - 62.000đ", shop: "Cat Store", img: "sữa hồng.jpg" },
+    { name: "Sữa Tắm DEAR DOKET 200ML bị ve, rận, bọ chét, bọ nhảy, mượt bóng da lông, thơm dịu nhẹ", price: "39.000đ- 59.000đ", shop: "Love Pets", img: "sữa xanh.png" },
+    { name: "Sữa Tắm Chó Mèo Cao Cấp Phòng ve, rận, bọ chét, bọ nhảy, mượt bóng da lông, thơm dịu nhẹ Dear Doket 200ML", price: "36.000đ- 56.000đ", shop: "Pet Shop", img: "sữa vàng.jpg" }
+];
+
+// 👉 Lấy keyword từ URL
+const params = new URLSearchParams(window.location.search);
+const keyword = params.get("q")?.toLowerCase() || "";
+
+// 👉 Hiển thị lại keyword trên ô search
+document.getElementById("searchInput").value = keyword;
+
+const resultList = document.getElementById("result-list");
+const message = document.getElementById("searchMessage");
+
+let found = false;
+
+// 👉 Render sản phẩm
+const words = keyword.split(" ");
+
+productData.forEach(p => {
+    const name = p.name.toLowerCase();
+
+    if (words.every(word => name.includes(word))) {
+        found = true;
+
+        const item = document.createElement("div");
+        item.className = "product-item";
+
+        item.innerHTML = `
+        <div onclick="goDetail('${p.shop}')" style="cursor:pointer;">
+            <img src="${p.img}">
+            <p class="name">${p.name}</p>
+            <p class="price">${p.price}</p>
+            <p class="shop">${p.shop}</p>
+        </div>
+`;
+
+        resultList.appendChild(item);
+    }
+});
+
+// 👉 Không có sản phẩm
+if (!found) {
+    message.innerText = "Không tồn tại sản phẩm.";
+}
+
+// 👉 search tiếp trên trang này
+function searchProduct() {
+    const keyword = document.getElementById("searchInput").value.trim();
+    if (keyword === "") return;
+
+    window.location.href = "timkiem.html?q=" + encodeURIComponent(keyword);
+}
+
+// Enter
+document.getElementById("searchInput").addEventListener("keyup", function(e) {
+    if (e.key === "Enter") {
+        searchProduct();
+    }
+});
+function goDetail(shop) {
+    // chỉ cho shop Happy Pets vào trang chi tiết
+    if (shop === "Happy Pets") {
+        window.location.href = "XemSP3.html";
+    } else {
+        alert("Chỉ shop Happy Pets có trang chi tiết demo!");
+    }
+}
+</script>
+
+</body>
+</html>

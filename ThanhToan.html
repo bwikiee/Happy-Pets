@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thanh toán</title>
+  <link rel="stylesheet" href="tt.css">
+</head>
+<body>
+
+  <h2>🐾 Happy Pets | Thanh toán</h2>
+
+<!-- ADDRESS -->
+<div class="box address">
+  <h3>📍 Địa chỉ nhận hàng</h3>
+  <p><b>Nguyễn Văn A - 0123456789</b></p>
+  <p>123 Đường ABC, TP.Huế</p>
+</div>
+
+<!-- PRODUCT -->
+<div class="box">
+
+  <div class="cart-header">
+    <div class="sp">Sản phẩm</div>
+    <div>Đơn giá</div>
+    <div>Số lượng</div>
+    <div>Thành tiền</div>
+  </div>
+
+  <div id="checkout-list"></div>
+
+</div>
+
+<!-- PAYMENT -->
+<div class="box">
+  <h3>💳 Phương thức thanh toán</h3>
+  <label><input type="radio" name="pay">Tiền mặt</label>
+  <label><input type="radio" name="pay"> Chuyển khoản</label>
+</div>
+
+<!-- TOTAL -->
+<div class="footer">
+  <span id="total">Tổng: 0đ</span>
+  <button onclick="placeOrder()">Đặt hàng</button>
+</div>
+
+<script src="checkout.js"></script>
+
+</body>
+</html>
