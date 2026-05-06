@@ -86,10 +86,18 @@ function addToCart() {
   const name = document.querySelector(".info-box h1").innerText;
   const price = 35000;
   const quantity = parseInt(document.querySelector(".qty input").value);
-  const image = document.querySelector(".main-img").src;
+
+  let image = document.querySelector(".main-img").getAttribute("src");
+
+  if (image.includes("file:///")) {
+    image = image.split("/").pop(); 
+  }
+
+  if (image.includes("github.io")) {
+    image = image.split("/").pop();   }
 
   const product = {
-    id: 3, // sản phẩm 3
+    id: 3,
     name: name,
     price: price,
     quantity: quantity,
