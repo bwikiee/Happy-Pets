@@ -1,0 +1,283 @@
+
+/* TOP BAR */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 60px;
+    font-size: 13px;
+    background: linear-gradient(to right, #63eaff, #1ccce4);
+    color: #fff;
+}
+
+/* MAIN HEADER */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 60px;
+    background: linear-gradient(to right, #63eaff, #1ccce4);
+    color: white;
+}
+
+/* LOGO */
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* SEARCH */
+.search-box {
+    display: flex;
+    width: 50%;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.search-box button {
+    width: 50px;
+    border: none;
+    background: #ffff;
+    color: white;
+    cursor: pointer;
+}
+
+/* CART */
+.cart {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    gap: 20px;
+
+    padding: 8px 60px;
+    background: linear-gradient(to right, #63eaff, #1ccce4);
+    font-size: 14px;
+}
+
+.menu span {
+    white-space: nowrap;
+    cursor: pointer;
+}
+.banner {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* nút */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+.container {
+    width: 1200px;       
+    margin: 0 auto;       
+}
+
+/* banner layout */
+.banner-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* trái */
+.banner-left {
+    flex: 3;
+    position: relative;
+    width: fit-content;   
+    margin: 0 auto; 
+}
+
+.banner-left img {      
+    display: block;
+    margin: 0 auto; 
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.banner-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.banner-right img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+/* tiêu đề */
+.suggest-title {
+    margin: 20px 0 10px;
+    padding: 10px;
+    text-align: center;
+
+    font-weight: bold;
+    font-size: 18px;
+    color: #ff5722; /* hoặc xanh bạn đang dùng */
+
+    background: #fff;
+    border-radius: 5px;
+}
+
+/* danh sách sản phẩm */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 sản phẩm 1 hàng */
+    gap: 15px;
+}
+
+/* từng sản phẩm */
+.product-item {
+    background: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.product-item:hover {
+    transform: translateY(-3px);
+}
+
+/* ảnh */
+.product-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+}
+
+/* tên */
+.product-item .name {
+    font-size: 14px;
+    margin: 5px 0 2px;
+}
+
+/* giá */
+.product-item .price {
+    color: red;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* NÚT CHUYỂN TRẠNG THÁI MÀU XANH */
+.status-btn {
+    background: #1ccce4;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.booking-form button {
+    background: #1ccce4;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.booking-form button:hover {
+    background: #0fb3cc;
+}
+
+.status-btn:hover {
+    background: #0fb3cc;
+}
+.filter-box {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-box button {
+    background: #1ccce4;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#reportResult {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+.admin-box {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.user {
+    color: white;
+}
+
+/* box xổ xuống */
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 25px;
+
+    background: white;
+    color: black;
+    min-width: 150px;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+/* từng dòng menu */
+.dropdown div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown div:hover {
+    background: #1ccce4;
+    color: white;
+}
+.dropdown {
+    pointer-events: auto;
+}
