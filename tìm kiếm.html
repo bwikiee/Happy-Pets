@@ -16,7 +16,7 @@
         <input id="searchInput" type="text" placeholder="Tìm sản phẩm...">
         <button onclick="searchProduct()">🔍</button>
     </div>
-     <div class="cart">
+     <div class="cart" onclick="goCart()">
     <i class="fa-solid fa-cart-shopping"></i></div>
 </div>
 <div class="menu">
@@ -126,6 +126,9 @@ function goDetail(shop) {
     else if (shop === "Pet Shop") {
         window.location.href = "XemSP3.html";
     }
+}
+function goCart() {
+    window.location.href = "XemGH.html";
 }
 </script>
 
