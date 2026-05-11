@@ -17,8 +17,8 @@
   </div>
 
   <div class="search-box">
-    <input type="text" placeholder="Tìm kiếm sản phẩm, shop...">
-    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Tìm kiếm...">
+    <button onclick="searchCart()">🔍</button>
   </div>
 
 </div>
@@ -126,7 +126,40 @@
   // chuyển sang trang thanh toán
   window.location.href = "ThanhToan.html";
 }
-  </script>
+function searchCart() {
+
+  let keyword = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+  let items = document.querySelectorAll(".cart-item");
+
+  items.forEach(item => {
+
+    let text = item.innerText.toLowerCase();
+
+    if (text.includes(keyword)) {
+      item.style.display = "flex";
+    } 
+    
+    else {
+      item.style.display = "none";
+    }
+
+  });
+}
+
+document.getElementById("searchInput")
+.addEventListener("keyup", function(e){
+
+    if(e.key === "Enter"){
+        searchCart();
+    }
+
+});
+</script>
 
 </body>
 </html>
