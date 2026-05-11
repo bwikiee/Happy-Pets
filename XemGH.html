@@ -38,7 +38,11 @@
   <!-- FOOTER -->
   <div class="cart-footer">
     <div class="left">
-      <input type="checkbox"> Chọn tất cả
+      <input
+        type="checkbox"
+        id="check-all"
+        onchange="checkAllProducts()"
+        checked>Chọn tất cả
     </div>
 
     <div class="right">
@@ -65,27 +69,50 @@
       div.className = "cart-item";
 
       div.innerHTML = `
-        <div class="product-info">
-          <img src="${item.image || 'suatam.jpg'}">
-          <span>${item.name}</span>
-        </div>
 
-        <div class="col">${item.price.toLocaleString()}đ</div>
+<div class="product-info">
 
-        <div class="col">
-          <div class="qty-box">
-            <button onclick="changeQty(${index}, -1)">-</button>
-            <span>${item.quantity}</span>
-            <button onclick="changeQty(${index}, 1)">+</button>
-          </div>
-        </div>
+  <input
+    type="checkbox"
+    class="item-check"
+    onchange="updateTotal()"
+    checked
+  >
 
-        <div class="col">${subtotal.toLocaleString()}đ</div>
+  <img src="${item.image}">
 
-        <div class="col">
-          <button onclick="removeItem(${index})">Xóa</button>
-        </div>
-      `;
+  <span>${item.name}</span>
+
+</div>
+
+<div class="col">
+  ${item.price.toLocaleString()}đ
+</div>
+
+<div class="col">
+
+  <div class="qty-box">
+
+    <button onclick="changeQty(${index}, -1)">-</button>
+
+    <span>${item.quantity}</span>
+
+    <button onclick="changeQty(${index}, 1)">+</button>
+
+  </div>
+
+</div>
+
+<div class="col subtotal">
+  ${subtotal.toLocaleString()}đ
+</div>
+
+<div class="col">
+  <button onclick="removeItem(${index})">
+    Xóa
+  </button>
+</div>
+`;
 
       container.appendChild(div);
     });
@@ -159,6 +186,46 @@ document.getElementById("searchInput")
     }
 
 });
+function updateTotal() {
+
+  let checks = document.querySelectorAll(".item-check");
+
+  let subtotals = document.querySelectorAll(".subtotal");
+
+  let total = 0;
+
+  checks.forEach((check, index) => {
+
+    if (check.checked) {
+
+      let money = subtotals[index]
+        .innerText
+        .replaceAll(",", "")
+        .replace("đ", "");
+
+      total += Number(money);
+
+    }
+
+  });
+
+  document.getElementById("total-price").innerText =
+    "Tổng cộng: " + total.toLocaleString() + "đ";
+}
+function checkAllProducts() {
+
+  let isChecked =
+    document.getElementById("check-all").checked;
+
+  let checks =
+    document.querySelectorAll(".item-check");
+
+  checks.forEach(check => {
+    check.checked = isChecked;
+  });
+
+  updateTotal();
+}
 </script>
 
 </body>
