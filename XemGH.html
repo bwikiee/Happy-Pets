@@ -200,7 +200,7 @@ function updateTotal() {
 
       let money = subtotals[index]
         .innerText
-        .replaceAll(",", "")
+        .replaceAll(".", "")
         .replace("đ", "");
 
       total += Number(money);
