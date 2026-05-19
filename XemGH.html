@@ -74,54 +74,37 @@
       div.innerHTML = `
 
 <div class="product-info">
-
   <input
   type="checkbox"
   class="item-check"
   ${item.checked ? "checked" : ""}
   onchange="toggleCheck(${index}, this.checked)"
   >
-
   <img src="${item.image}">
-
   <span>${item.name}</span>
-
 </div>
-
 <div class="col">
   ${item.price.toLocaleString()}đ
 </div>
-
 <div class="col">
-
   <div class="qty-box">
-
     <button onclick="changeQty(${index}, -1)">-</button>
-
     <span>${item.quantity}</span>
-
     <button onclick="changeQty(${index}, 1)">+</button>
-
   </div>
-
 </div>
-
 <div class="col subtotal">
   ${subtotal.toLocaleString()}đ
 </div>
-
 <div class="col">
   <button onclick="removeItem(${index})">
     Xóa
   </button>
 </div>
 `;
-
       container.appendChild(div);
     });
-
     updateTotal();
-
 localStorage.setItem(
   "cart",
   JSON.stringify(cart)
@@ -162,16 +145,15 @@ function toggleCheck(index, checked) {
   updateTotal();
 }
   loadCart();
+
   function goCheckout() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // kiểm tra giỏ hàng
   if (cart.length === 0) {
     alert("Giỏ hàng trống!");
     return;
   }
 
-  // chuyển sang trang thanh toán
   window.location.href = "payment.html";
 }
 function searchCart() {
@@ -208,25 +190,16 @@ document.getElementById("searchInput")
 
 });
 function updateTotal() {
-
   let checks = document.querySelectorAll(".item-check");
-
   let subtotals = document.querySelectorAll(".subtotal");
-
   let total = 0;
-
   checks.forEach((check, index) => {
-
     if (check.checked) {
-
       let money = subtotals[index]
       .innerText
       .replace(/[^\d]/g, "");
-
       total += Number(money);
-
     }
-
   });
 
   document.getElementById("total-price").innerText =
